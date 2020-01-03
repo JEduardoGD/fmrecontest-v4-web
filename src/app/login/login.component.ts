@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { AuthenticationService } from '../services/authentication.service';
-import { User } from '../model/user.model';
+import { SweetAlertService } from '../services/sweet.alert.service';
 
 @Component({
     selector: 'app-login',
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         public router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private sweetAlertService: SweetAlertService
     ) {}
 
     ngOnInit() {
@@ -28,8 +29,17 @@ export class LoginComponent implements OnInit {
     }
 
     async onLoggedin() {
-        const x: User = await this.authenticationService.login(this.email, this.password);
-        localStorage.setItem('currentUser', JSON.stringify(x));
-        this.router.navigate([this.returnUrl]);
+        this.authenticationService.login(this.email, this.password)
+        .then(user => {
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.sweetAlertService.successMessage('Right!', 'Success login')
+            .then(result => {
+                this.router.navigate([this.returnUrl]);
+            });
+        })
+        .catch(error => {
+            this.sweetAlertService.errorMessage('Error!', 'Login fail!')
+            .then(result => {});
+        });
     }
 }

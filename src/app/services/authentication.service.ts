@@ -14,7 +14,6 @@ export class AuthenticationService {
 
     async login(email: string, password: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            console.log({ email: email, password: password });
             this.http.post(`${ENDPOINT.LOGIN}`, { email: email, password: password })
             .subscribe(response => {
                 localStorage.setItem('currentUser', JSON.stringify(response));

@@ -11,6 +11,7 @@ import { AuthGuard } from './shared';
 import { AuthenticationService } from './services/authentication.service';
 import { FormsModule } from '@angular/forms';
 import { JwtInterceptor } from './config/jwt.interceptor';
+import { SweetAlertService } from './services/sweet.alert.service';
 
 @NgModule({
     imports: [
@@ -30,7 +31,9 @@ import { JwtInterceptor } from './config/jwt.interceptor';
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
             multi: true
-        }],
+        },
+        SweetAlertService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
