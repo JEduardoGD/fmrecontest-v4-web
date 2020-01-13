@@ -9,6 +9,8 @@ import { routerTransition } from 'src/app/router.animations';
 })
 export class ContestComponent implements OnInit {
 
+  data: any[] = [];
+
   constructor() { }
 
   ngOnInit() {
