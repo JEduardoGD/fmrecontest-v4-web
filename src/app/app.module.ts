@@ -12,6 +12,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { FormsModule } from '@angular/forms';
 import { JwtInterceptor } from './config/jwt.interceptor';
 import { SweetAlertService } from './services/sweet.alert.service';
+import { ContestService } from './services/contest.service';
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { SweetAlertService } from './services/sweet.alert.service';
             useClass: JwtInterceptor,
             multi: true
         },
-        SweetAlertService
+        SweetAlertService,
+        ContestService
     ],
     bootstrap: [AppComponent]
 })
