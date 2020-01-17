@@ -28,7 +28,6 @@
     "chart.js": "2.7.3",
     "core-js": "2.5.7",
     "font-awesome": "4.7.0",
-    "ng-angular8-datatable": "^0.9.11",
     "ng2-charts": "2.3.0",
     "rxjs": "6.5.2",
     "sweetalert2": "^9.5.4",
