@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from 'src/app/router.animations';
 import { ContestService } from 'src/app/services/contest.service';
+import { ContestModel } from 'src/app/model/contest.model';
 
 @Component({
   selector: 'app-contest',
@@ -10,8 +11,7 @@ import { ContestService } from 'src/app/services/contest.service';
 })
 export class ContestComponent implements OnInit {
 
-  data: any[] = [];
-  x: any;
+  listContest: Array<ContestModel>;
 
   constructor(private contestService: ContestService) { }
 
@@ -22,10 +22,8 @@ export class ContestComponent implements OnInit {
   onLoadContests() {
     this.contestService.getContestList()
     .then(u => {
-      console.log('-------------------------------');
-      console.log(u);
-      console.log('-------------------------------');
-      this.x = u;
+      const x: Array<ContestModel> = u.data;
+      this.listContest = x;
     });
   }
 
