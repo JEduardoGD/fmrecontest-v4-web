@@ -5,17 +5,19 @@
       <p>
         contest works!
       </p>
-      <table>
+      <table class="table table-hover table-striped">
         <thead>
           <tr>
             <th>ID</th>
             <th>Contest</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of listContest">
             <td>{{ item.id }}</td>
             <td>{{ item.description }}</td>
+            <td><a routerLink="/editions/bycontestid/{{item.id}}" title="show editions" routerLinkActive="active"><i class="fa fa-list" aria-hidden="true"></i></a></td>
           </tr>
         </tbody>
         <tfoot>
