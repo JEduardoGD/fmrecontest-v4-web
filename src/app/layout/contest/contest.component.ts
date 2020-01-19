@@ -33,5 +33,4 @@ export class ContestComponent implements OnInit {
       console.error(e);
     });
   }
-
 }

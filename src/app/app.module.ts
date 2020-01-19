@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { JwtInterceptor } from './config/jwt.interceptor';
 import { SweetAlertService } from './services/sweet.alert.service';
 import { ContestService } from './services/contest.service';
+import { EditionsService } from './services/editions.service';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import { ContestService } from './services/contest.service';
             multi: true
         },
         SweetAlertService,
-        ContestService
+        ContestService,
+        EditionsService
     ],
     bootstrap: [AppComponent]
 })

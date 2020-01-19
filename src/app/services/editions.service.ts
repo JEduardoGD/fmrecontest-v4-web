@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ENDPOINT } from '../config/constants';
+
 import { ResponseModel } from '../model/response.model';
 
-@Injectable()
-export class ContestService {
+import { ENDPOINT } from '../config/constants';
+
+export class EditionsService {
     constructor(private http: HttpClient) { }
 
-    async getContestList(): Promise<ResponseModel> {
+    async getAllByContestId(contestId: number): Promise<ResponseModel> {
         return new Promise((resolve, reject) => {
-            this.http.get(`${ENDPOINT.CONTEST}`)
+            this.http.get(`${ENDPOINT.EDITION}/bycontestid/${contestId}`)
             .subscribe(response => {
                 resolve(response as ResponseModel);
           }, err => {
