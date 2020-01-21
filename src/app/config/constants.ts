@@ -4,5 +4,6 @@ export const ENDPOINT: any = {
     USER: `${ environment.endpoint }/user`,
     LOGIN: `${ environment.endpoint }/login`,
     CONTEST: `${ environment.endpoint }/contest`,
-    EDITION: `${ environment.endpoint }/edition`
+    EDITION: `${ environment.endpoint }/edition`,
+    EMAIL: `${ environment.endpoint }/emails`
 };

@@ -14,6 +14,7 @@ import { JwtInterceptor } from './config/jwt.interceptor';
 import { SweetAlertService } from './services/sweet.alert.service';
 import { ContestService } from './services/contest.service';
 import { EditionsService } from './services/editions.service';
+import { EmailsService } from './services/email.service';
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import { EditionsService } from './services/editions.service';
         },
         SweetAlertService,
         ContestService,
-        EditionsService
+        EditionsService,
+        EmailsService
     ],
     bootstrap: [AppComponent]
 })
