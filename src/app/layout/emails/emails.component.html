@@ -7,7 +7,7 @@
           <tr>
             <th>ID</th>
             <th>Subject</th>
-            <th width="200">Sent date UTC</th>
+            <th width="200">Recived date UTC</th>
             <th>From address</th>
             <th>status</th>
           </tr>
@@ -16,7 +16,7 @@
           <tr *ngFor="let item of listEmail">
             <td>{{ item.id }}</td>
             <td>{{ item.subject }}</td>
-            <td>{{ item.sentDate }}</td>
+            <td>{{ item.setReceivedDate }}</td>
             <td>{{ item.recipientsFromAddress }}</td>
             <td>{{ item.emailStatus }}</td>
           </tr>
