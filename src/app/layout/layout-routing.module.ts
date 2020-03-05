@@ -8,9 +8,10 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
-            { path: 'emails', loadChildren: () => import('./emails/emails.module').then(m => m.EmailsModule) },
-            { path: 'editions', loadChildren: () => import('./editions/editions.module').then(m => m.EditionsModule) },
             { path: 'contest', loadChildren: () => import('./contest/contest.module').then(m => m.ContestModule) },
+            { path: 'editions', loadChildren: () => import('./editions/editions.module').then(m => m.EditionsModule) },
+            { path: 'emails', loadChildren: () => import('./emails/emails.module').then(m => m.EmailsModule) },
+            { path: 'conteos', loadChildren: () => import('./conteos/conteos.module').then(m => m.ConteosModule) },
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
             { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule) },
             { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },
