@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConteosComponent } from './conteos.component';
+import { ChartsModule } from 'ng2-charts';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ConteosComponent', () => {
   let component: ConteosComponent;
@@ -8,7 +11,12 @@ describe('ConteosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConteosComponent ]
+      declarations: [ ConteosComponent ],
+      imports: [
+        ChartsModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+      ],
     })
     .compileComponents();
   }));
