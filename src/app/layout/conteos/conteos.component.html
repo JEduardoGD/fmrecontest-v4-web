@@ -20,7 +20,7 @@
             <td>{{conteo.contestId}} {{conteo.contest}}</td>
             <td>{{conteo.editionId}} {{conteo.edition}}</td>
             <td>{{conteo.noComplete ? 'NO COMPLETE' : ''}}</td>
-            <td></td>
+            <td><a routerLink="/contestlogs/byconteoid/{{conteo.id}}" title="show editions" routerLinkActive="active">show logs</a></td>
           </tr>
         </tbody>
         <tfoot>
