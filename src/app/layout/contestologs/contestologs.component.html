@@ -1,3 +1,35 @@
-<p>
-  contestologs works!
-</p>
+<div [@routerTransition]>
+  <app-page-header [heading]="'Conteos'" [icon]="'fa-table'"></app-page-header>
+  <div class="row">
+    <div class="col col-sm-12">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email ID</th>
+            <th>Callsign</th>
+            <th>Qso size</th>
+            <th>Sum of points</th>
+            <th>multipliers</th>
+            <th>total points</th>
+            <th>complete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contestlog of contestlogList">
+            <td>{{contestlog.id}}</td>
+            <td>{{contestlog.emailId}}</td>
+            <td>{{contestlog.callsign}}</td>
+            <td>{{contestlog.contestQsoSize}}</td>
+            <td>{{contestlog.sumOfPoints}}</td>
+            <td>{{contestlog.multipliers}}</td>
+            <td>{{contestlog.totalPoints}}</td>
+            <td>{{contestlog.complete}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

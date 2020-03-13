@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContestologsComponent } from './contestologs.component';
 
 const routes: Routes = [
-  { path: '', component: ContestologsComponent }
+  { path: '', component: ContestologsComponent },
+  { path: 'byconteoid/:conteoid', component: ContestologsComponent }
 ];
 
 @NgModule({
@@ -11,3 +12,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ContestologsRoutingModule { }
+``
