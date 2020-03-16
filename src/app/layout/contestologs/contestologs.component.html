@@ -13,6 +13,7 @@
             <th>multipliers</th>
             <th>total points</th>
             <th>complete</th>
+            <th>actions</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
             <td>{{contestlog.multipliers}}</td>
             <td>{{contestlog.totalPoints}}</td>
             <td>{{contestlog.complete}}</td>
+            <td><a routerLink="/qsos/byconteoid/{{conteoid}}/logid/{{contestlog.id}}" title="show editions" routerLinkActive="active">show logs</a></td>
           </tr>
         </tbody>
         <tfoot>

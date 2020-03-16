@@ -7,5 +7,6 @@ export const ENDPOINT: any = {
     EDITION: `${ environment.endpoint }/edition`,
     EMAIL: `${ environment.endpoint }/emails`,
     CONTEOS: `${ environment.endpoint }/conteo`,
-    CONTESTLOG: `${ environment.endpoint }/contestlog`
+    CONTESTLOG: `${ environment.endpoint }/contestlogs`,
+    QSOS: `${ environment.endpoint }/qsos`
 };

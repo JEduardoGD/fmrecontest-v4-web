@@ -13,6 +13,7 @@ const routes: Routes = [
             { path: 'emails', loadChildren: () => import('./emails/emails.module').then(m => m.EmailsModule) },
             { path: 'conteos', loadChildren: () => import('./conteos/conteos.module').then(m => m.ConteosModule) },
             { path: 'contestlogs', loadChildren: () => import('./contestologs/contestologs.module').then(m => m.ContestologsModule) },
+            { path: 'qsos', loadChildren: () => import('./qsos/qsos.module').then(m => m.QsosModule) },
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
             { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule) },
             { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },

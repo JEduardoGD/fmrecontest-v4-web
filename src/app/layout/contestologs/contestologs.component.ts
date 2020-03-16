@@ -29,7 +29,7 @@ export class ContestologsComponent implements OnInit {
     this.loadContestlogs(this.conteoid);
   }
 
-  loadContestlogs(conteoid: number){
+  loadContestlogs(conteoid: number) {
     this.contestlogService.findByConteotId(conteoid)
     .then(u => {
       const x: Array<Contestlog> = u.data;
