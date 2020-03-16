@@ -13,11 +13,12 @@
             <th>DXCC</th>
             <th>Points</th>
             <th>Mult</th>
+            <th>Frequency</th>
             <th>Band</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let qso of contestQsoList">
+          <tr *ngFor="let qso of contestQsoList" [ngClass]="{'table-danger' : qso.qsoBand == 'NOT FOUND'}">
             <td>{{qso.id}}</td>
             <td>{{qso.callsignR}}</td>
             <td>{{qso.dateTime}}</td>
@@ -26,6 +27,7 @@
             <td>{{qso.dxccEntity}}</td>
             <td>{{qso.points}}</td>
             <td>{{qso.multiply ? "1" : ""}}</td>
+            <td>{{qso.frequency}}</td>
             <td>{{qso.qsoBand}}</td>
           </tr>
         </tbody>

@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let conteo of conteoList">
+          <tr *ngFor="let conteo of conteoList" [ngClass]="{'table-danger' : conteo.noComplete == true}">
             <td>{{conteo.id}}</td>
             <td>{{conteo.datetime}}</td>
             <td>{{conteo.contestId}} {{conteo.contest}}</td>

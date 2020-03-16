@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let contestlog of contestlogList">
+          <tr *ngFor="let contestlog of contestlogList" [ngClass]="{'table-danger' : contestlog.complete == false}">
             <td>{{contestlog.id}}</td>
             <td>{{contestlog.emailId}}</td>
             <td>{{contestlog.callsign}}</td>
@@ -26,7 +26,11 @@
             <td>{{contestlog.multipliers}}</td>
             <td>{{contestlog.totalPoints}}</td>
             <td>{{contestlog.complete}}</td>
-            <td><a routerLink="/qsos/byconteoid/{{conteoid}}/logid/{{contestlog.id}}" title="show editions" routerLinkActive="active">show logs</a></td>
+            <td><a 
+              routerLink="/qsos/byconteoid/{{conteoid}}/logid/{{contestlog.id}}" 
+              title="show editions" 
+              routerLinkActive="active"
+              target="_blank">show logs</a></td>
           </tr>
         </tbody>
         <tfoot>
