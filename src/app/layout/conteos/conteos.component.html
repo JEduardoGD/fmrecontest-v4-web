@@ -22,7 +22,7 @@
             <td>{{conteo.noComplete ? 'NO COMPLETE' : ''}}</td>
             <td>
               <a routerLink="/contestlogs/byconteoid/{{conteo.id}}" title="show editions" routerLinkActive="active">show logs</a> | 
-              <input type="button" (click)="downloadFile(conteo.id)" value="Download Employee Data"/>
+              <a href="javascript:void(0)" title="show editions" (click)="downloadFile(conteo.id)">show logs</a>
             </td>
           </tr>
         </tbody>
