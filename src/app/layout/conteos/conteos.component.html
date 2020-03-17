@@ -20,7 +20,10 @@
             <td>{{conteo.contestId}} {{conteo.contest}}</td>
             <td>{{conteo.editionId}} {{conteo.edition}}</td>
             <td>{{conteo.noComplete ? 'NO COMPLETE' : ''}}</td>
-            <td><a routerLink="/contestlogs/byconteoid/{{conteo.id}}" title="show editions" routerLinkActive="active">show logs</a></td>
+            <td>
+              <a routerLink="/contestlogs/byconteoid/{{conteo.id}}" title="show editions" routerLinkActive="active">show logs</a> | 
+              <input type="button" (click)="downloadFile(conteo.id)" value="Download Employee Data"/>
+            </td>
           </tr>
         </tbody>
         <tfoot>
