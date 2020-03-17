@@ -26,11 +26,18 @@
             <td>{{contestlog.multipliers}}</td>
             <td>{{contestlog.totalPoints}}</td>
             <td>{{contestlog.complete}}</td>
-            <td><a 
-              routerLink="/qsos/byconteoid/{{conteoid}}/logid/{{contestlog.id}}" 
-              title="show editions" 
-              routerLinkActive="active"
-              target="_blank">show qsos</a></td>
+            <td>
+              <a 
+                routerLink="/qsos/byconteoid/{{conteoid}}/logid/{{contestlog.id}}" 
+                title="show editions" 
+                routerLinkActive="active"
+                target="_blank">show qsos</a> | 
+              
+              <a 
+                href="javascript:void(0)" 
+                title="download report" 
+                (click)="downloadFile(conteoid, contestlog.id)">download report</a>
+            </td> 
           </tr>
         </tbody>
         <tfoot>

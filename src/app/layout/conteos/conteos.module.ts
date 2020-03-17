@@ -16,7 +16,7 @@ import { ReportsService } from 'src/app/services/reports.service';
   ],
   providers: [
     ConteoService,
-    ReportsService
+    ReportsService,
   ]
 })
 export class ConteosModule { }

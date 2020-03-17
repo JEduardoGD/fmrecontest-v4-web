@@ -4,6 +4,8 @@ import { ContestologsComponent } from './contestologs.component';
 import { PageHeaderModule } from 'src/app/shared';
 import { ContestologsRoutingModule } from './contestologs-routing.module';
 import { ContestlogService } from 'src/app/services/contestlog.service';
+import { ReportsService } from 'src/app/services/reports.service';
+import { QsosService } from 'src/app/services/qsos.service';
 
 @NgModule({
   declarations: [ContestologsComponent],
@@ -13,7 +15,9 @@ import { ContestlogService } from 'src/app/services/contestlog.service';
     PageHeaderModule,
   ],
   providers: [
-    ContestlogService
+    ContestlogService,
+    ReportsService,
+    QsosService
   ]
 })
 export class ContestologsModule { }

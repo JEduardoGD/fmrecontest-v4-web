@@ -30,4 +30,16 @@ export class ReportsService {
       });
     });
   }
+
+  async getLogReport(conteoId: number, contestlogId: number):  Promise<Blob> {
+    return new Promise((resolve, reject) => {
+        this.http.get(`${ENDPOINT.REPORTS}/getbylogid/${contestlogId}/conteoid/${conteoId}`, {responseType: 'blob'})
+        .subscribe(r => {
+          resolve(r);
+      }, err => {
+        console.error(err);
+        reject(err);
+      });
+    });
+  }
 }

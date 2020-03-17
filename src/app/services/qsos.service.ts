@@ -18,4 +18,16 @@ export class QsosService {
           });
         });
     }
+
+    async find(conteoId: number, logId: number): Promise<ResponseModel> {
+        return new Promise((resolve, reject) => {
+            this.http.get(`${ENDPOINT.QSOS}/byconteoid/${conteoId}/logid/${logId}`)
+            .subscribe(response => {
+                resolve(response as ResponseModel);
+          }, err => {
+            console.error(err);
+            reject(err);
+          });
+        });
+    }
 }
