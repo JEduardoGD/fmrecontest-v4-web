@@ -15,6 +15,7 @@
             <th>Mult</th>
             <th>Frequency</th>
             <th>Band</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -24,16 +25,69 @@
             <td>{{qso.dateTime}}</td>
             <td>{{qso.exchangeE}}|{{qso.exchangeR}}</td>
             <td>{{qso.rstE}}|{{qso.rstR}}</td>
-            <td>{{qso.dxccEntity}}</td>
+            <td>({{qso.dxccEntityId}}) {{qso.dxccEntity}}</td>
             <td>{{qso.points}}</td>
             <td>{{qso.multiply ? "1" : ""}}</td>
             <td>{{qso.frequency}}</td>
             <td>{{qso.qsoBand}}</td>
+            <td>
+              <a 
+                href="javascript:void(0)" 
+                title="download report" 
+                (click)="open(content, qso.id, qso.dxccEntityId)">Set DxccEntity / Band</a>
+            </td>
           </tr>
         </tbody>
         <tfoot>
         </tfoot>
       </table>
+    </div>
+    <div class="col-sm-12">
+        <div class="card mb-3">
+            <div class="card-header">Modal</div>
+            <!-- Large modal -->
+            <div class="card-body">
+                <button class="btn btn-primary" (click)="open(content)">Set Dxcc Entity / Band</button>
+                <ng-template #content let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal title</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <form role="form">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="disabledSelect">Select DXCC Entity</label>
+                                <select id="disabledSelect" class="form-control" [(ngModel)]="selectedDxccEntityId" name="selectedDxccEntity">
+                                  <option>Select...</option>
+                                  <option [value]="dxccEntity.id" *ngFor="let dxccEntity of dxccEntities">({{dxccEntity.id}}) {{dxccEntity.entity}}</option>
+                                </select>
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                <label for="disabledSelect">Select Band</label>
+                                <select id="disabledSelect" class="form-control">
+                                    <option>Disabled select</option>
+                                </select>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Disabled Checkbox
+                                </label>
+                            </div>
+                            -->
+                            <button type="submit" class="btn btn-primary" (click)="updateDxccOrBand()">Update</button>
+                        </fieldset>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button id="closeModal" type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+                  </div>
+                </ng-template>
+            </div>
+        </div>
     </div>
   </div>
 </div>

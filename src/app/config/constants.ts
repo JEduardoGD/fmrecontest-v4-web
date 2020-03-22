@@ -9,5 +9,6 @@ export const ENDPOINT: any = {
     CONTEOS: `${ environment.endpoint }/conteo`,
     CONTESTLOG: `${ environment.endpoint }/contestlogs`,
     QSOS: `${ environment.endpoint }/qsos`,
-    REPORTS: `${ environment.endpoint }/reports`
+    REPORTS: `${ environment.endpoint }/reports`,
+    DXCCENTITY: `${ environment.endpoint }/dxccentity`
 };

@@ -6,7 +6,6 @@ import { SweetAlertService } from 'src/app/services/sweet.alert.service';
 import { routerTransition } from 'src/app/router.animations';
 import { ReportsService } from 'src/app/services/reports.service';
 import { QsosService } from 'src/app/services/qsos.service';
-import { ConteoModel } from 'src/app/model/conteo.model';
 import * as FileSaver from 'file-saver';
 
 @Component({
