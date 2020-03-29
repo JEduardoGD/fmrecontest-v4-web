@@ -65,19 +65,13 @@
                                   <option [value]="dxccEntity.id" *ngFor="let dxccEntity of dxccEntities">({{dxccEntity.id}}) {{dxccEntity.entity}}</option>
                                 </select>
                             </div>
-                            <!--
                             <div class="form-group">
-                                <label for="disabledSelect">Select Band</label>
-                                <select id="disabledSelect" class="form-control">
-                                    <option>Disabled select</option>
+                                <label for="disabledSelect">Select band</label>
+                                <select id="disabledSelect" class="form-control" [(ngModel)]="selectedDxccEntityId" name="selectedDxccEntity">
+                                  <option>Select...</option>
+                                  <option [value]="dxccEntity.id" *ngFor="let dxccEntity of dxccEntities">({{dxccEntity.id}}) {{dxccEntity.entity}}</option>
                                 </select>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Disabled Checkbox
-                                </label>
-                            </div>
-                            -->
                             <button type="submit" class="btn btn-primary" (click)="updateDxccOrBand()">Update</button>
                         </fieldset>
                     </form>
