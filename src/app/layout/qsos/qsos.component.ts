@@ -7,6 +7,8 @@ import { Contestqso } from 'src/app/model/contestqso.model';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DxccEntityService } from 'src/app/services/dxccentity.service';
 import { DxccEntityModel } from 'src/app/model/dxccentity.model';
+import { BandService } from 'src/app/services/band.service';
+import { BandModel } from 'src/app/model/band.service';
 
 @Component({
   selector: 'app-qsos',
@@ -20,17 +22,22 @@ export class QsosComponent implements OnInit {
   logid: number;
   contestQsoList: Contestqso[];
   closeResult: string;
+
   dxccEntities: Array<DxccEntityModel>;
+  frequencies: Array<BandModel>;
 
   selectedDxccEntityId: number;
+  selectedBandId: number;
   selectedQsoId: number;
+  selectedQso: Contestqso;
 
   constructor(
     private sweetAlertService: SweetAlertService,
     private qsosService: QsosService,
     private route: ActivatedRoute,
     private modalService: NgbModal,
-    private dxccEntityService: DxccEntityService) {
+    private dxccEntityService: DxccEntityService,
+    private bandService: BandService) {
       this.route.params.subscribe( params => {
         this.conteoid = params['conteoid'];
         this.logid = params['logid'];
@@ -40,6 +47,7 @@ export class QsosComponent implements OnInit {
   ngOnInit() {
     this.loadQsos(this.conteoid, this.logid);
     this.loadDxccEntities();
+    this.loadFrequencies();
   }
 
   loadQsos(conteoid, logid) {
@@ -54,7 +62,7 @@ export class QsosComponent implements OnInit {
     });
   }
 
-  loadDxccEntities(){
+  loadDxccEntities() {
     this.dxccEntityService.findAll()
     .then(y => {
       this.dxccEntities = y.data;
@@ -65,9 +73,22 @@ export class QsosComponent implements OnInit {
     });
   }
 
-  open(content, qsoId: number, id: number) {
-    this.selectedDxccEntityId = id;
+  loadFrequencies() {
+    this.bandService.findAll()
+    .then(y => {
+      this.frequencies = y.data;
+    })
+    .catch(e => {
+      this.sweetAlertService.errorMessage('Error', 'Intente mas tarde');
+      console.error(e);
+    });
+  }
+
+  open(content, qsoId: number, dxccEntityId: number, qsoBandId: number) {
+    this.selectedDxccEntityId = dxccEntityId;
+    this.selectedBandId = qsoBandId;
     this.selectedQsoId = qsoId;
+    this.selectedQso = this.contestQsoList.find(qso => qso.id = qsoId);
     this.modalService.open(content).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -85,11 +106,11 @@ export class QsosComponent implements OnInit {
       }
   }
 
-  updateDxccOrBand(){
-    if(this.selectedQsoId){
+  updateDxccOrBand() {
+    if (this.selectedQsoId) {
       this.qsosService.find(this.selectedQsoId, this.conteoid)
       .then(y => {
-        let contestQso = y.data as Contestqso;
+        const contestQso = y.data as Contestqso;
         return contestQso;
       })
       .then(contestQso => {
@@ -97,19 +118,29 @@ export class QsosComponent implements OnInit {
         return contestQso;
       })
       .then(contestQso => {
+        contestQso.qsoBandId = this.selectedBandId;
+        return contestQso;
+      })
+      .then(contestQso => {
         this.qsosService.save(contestQso)
         .then(y => {
-          this.sweetAlertService.successMessage('Actualizado', 'Se actualizó la entidad DXCC')
+          this.selectedDxccEntityId = null;
+          this.selectedBandId = null;
+          this.sweetAlertService.successMessage('Actualizado', 'Se actualizó la entidad DXCC o la Banda')
           .then(() => {
             this.loadQsos(this.conteoid, this.logid);
-          })
+          });
         })
         .catch(e => {
+          this.selectedDxccEntityId = null;
+          this.selectedBandId = null;
           this.sweetAlertService.errorMessage('Error', 'Intente mas tarde');
           console.error(e);
         });
       })
       .catch(e => {
+        this.selectedDxccEntityId = null;
+        this.selectedBandId = null;
         this.sweetAlertService.errorMessage('Error', 'Intente mas tarde');
         console.error(e);
       });

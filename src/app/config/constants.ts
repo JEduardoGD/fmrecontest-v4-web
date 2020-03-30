@@ -10,5 +10,7 @@ export const ENDPOINT: any = {
     CONTESTLOG: `${ environment.endpoint }/contestlogs`,
     QSOS: `${ environment.endpoint }/qsos`,
     REPORTS: `${ environment.endpoint }/reports`,
-    DXCCENTITY: `${ environment.endpoint }/dxccentity`
+    DXCCENTITY: `${ environment.endpoint }/dxccentity`,
+    FREQUENCY: `${ environment.endpoint }/frequency`,
+    BAND: `${ environment.endpoint }/band`
 };

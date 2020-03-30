@@ -34,7 +34,7 @@
               <a 
                 href="javascript:void(0)" 
                 title="download report" 
-                (click)="open(content, qso.id, qso.dxccEntityId)">Set DxccEntity / Band</a>
+                (click)="open(content, qso.id, qso.dxccEntityId, qso.qsoBandId)">Set DxccEntity / Band</a>
             </td>
           </tr>
         </tbody>
@@ -59,17 +59,17 @@
                       <form role="form">
                         <fieldset>
                             <div class="form-group">
-                                <label for="disabledSelect">Select DXCC Entity</label>
+                                <label for="disabledSelect">Select DXCC Entity for callsign <strong>{{selectedQso.callsignR}}</strong></label>
                                 <select id="disabledSelect" class="form-control" [(ngModel)]="selectedDxccEntityId" name="selectedDxccEntity">
                                   <option>Select...</option>
                                   <option [value]="dxccEntity.id" *ngFor="let dxccEntity of dxccEntities">({{dxccEntity.id}}) {{dxccEntity.entity}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="disabledSelect">Select band</label>
-                                <select id="disabledSelect" class="form-control" [(ngModel)]="selectedDxccEntityId" name="selectedDxccEntity">
+                                <label for="disabledSelect">Select band for frequency <strong>{{selectedQso.frequency}}</strong></label>
+                                <select id="disabledSelect" class="form-control" [(ngModel)]="selectedBandId" name="selectedBand">
                                   <option>Select...</option>
-                                  <option [value]="dxccEntity.id" *ngFor="let dxccEntity of dxccEntities">({{dxccEntity.id}}) {{dxccEntity.entity}}</option>
+                                  <option [value]="frequency.id" *ngFor="let frequency of frequencies">{{frequency.band}}</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary" (click)="updateDxccOrBand()">Update</button>

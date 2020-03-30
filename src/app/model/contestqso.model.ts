@@ -16,4 +16,5 @@ export class Contestqso {
    points: number;
    multiply: number;
    qsoBand: string;
+   qsoBandId: number;
 }
