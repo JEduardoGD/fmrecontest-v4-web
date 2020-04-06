@@ -72,6 +72,11 @@
                                   <option [value]="frequency.id" *ngFor="let frequency of frequencies">{{frequency.band}}</option>
                                 </select>
                             </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input name="updateAllFreq" type="checkbox" selected [(ngModel)]="selectedUpdateAll" />Update all qsos on this log with frequency {{selectedQso.frequency}}
+                                </label>
+                            </div>
                             <button type="submit" class="btn btn-primary" (click)="updateDxccOrBand()">Update</button>
                         </fieldset>
                     </form>

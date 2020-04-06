@@ -30,6 +30,7 @@ export class QsosComponent implements OnInit {
   selectedBandId: number;
   selectedQsoId: number;
   selectedQso: Contestqso;
+  selectedUpdateAll: boolean;
 
   constructor(
     private sweetAlertService: SweetAlertService,
@@ -88,7 +89,7 @@ export class QsosComponent implements OnInit {
     this.selectedDxccEntityId = dxccEntityId;
     this.selectedBandId = qsoBandId;
     this.selectedQsoId = qsoId;
-    this.selectedQso = this.contestQsoList.find(qso => qso.id = qsoId);
+    this.selectedQso = this.contestQsoList.find(qso => qso.id === qsoId);
     this.modalService.open(content).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -119,6 +120,10 @@ export class QsosComponent implements OnInit {
       })
       .then(contestQso => {
         contestQso.qsoBandId = this.selectedBandId;
+        return contestQso;
+      })
+      .then(contestQso => {
+        contestQso.selectedUpdateAll = this.selectedUpdateAll;
         return contestQso;
       })
       .then(contestQso => {

@@ -17,4 +17,5 @@ export class Contestqso {
    multiply: number;
    qsoBand: string;
    qsoBandId: number;
+   selectedUpdateAll: boolean;
 }
