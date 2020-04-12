@@ -19,13 +19,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let qso of contestQsoList" [ngClass]="{'table-danger' : qso.qsoBand == 'NOT FOUND'}">
+          <tr *ngFor="let qso of contestQsoList" [ngClass]="{'table-danger' : (qso.qsoBand == 'NOT FOUND' || qso.dxccEntityId === null)}">
             <td>{{qso.id}}</td>
             <td>{{qso.callsignR}}</td>
             <td>{{qso.dateTime}}</td>
             <td>{{qso.exchangeE}}|{{qso.exchangeR}}</td>
             <td>{{qso.rstE}}|{{qso.rstR}}</td>
-            <td>({{qso.dxccEntityId}}) {{qso.dxccEntity}}</td>
+            <td *ngIf="qso.dxccEntityId !== null">({{qso.dxccEntityId}}) {{qso.dxccEntity}}</td>
+            <td *ngIf="qso.dxccEntityId === null">NOT FOUND</td>
             <td>{{qso.points}}</td>
             <td>{{qso.multiply ? "1" : ""}}</td>
             <td>{{qso.frequency}}</td>
