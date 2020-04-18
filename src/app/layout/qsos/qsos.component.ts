@@ -151,5 +151,35 @@ export class QsosComponent implements OnInit {
       });
     }
   }
-}
 
+  setAsDxccOrBandError() {
+    if (this.selectedQsoId) {
+      this.qsosService.find(this.selectedQsoId, this.conteoid)
+      .then(y => {
+        const contestQso = y.data as Contestqso;
+        return contestQso;
+      })
+      .then(contestQso => {
+        contestQso.dxccOrBandError = true;
+        return contestQso;
+      })
+      .then(contestQso => {
+        this.qsosService.save(contestQso)
+        .then(y => {
+          this.selectedDxccEntityId = null;
+          this.selectedBandId = null;
+          this.sweetAlertService.successMessage('Actualizado', 'Se seteó el QSO como error')
+          .then(() => {
+            this.loadQsos(this.conteoid, this.logid);
+          });
+        })
+        .catch(e => {
+          this.selectedDxccEntityId = null;
+          this.selectedBandId = null;
+          this.sweetAlertService.errorMessage('Error', 'Intente mas tarde');
+          console.error(e);
+        });
+      });
+    }
+  }
+}

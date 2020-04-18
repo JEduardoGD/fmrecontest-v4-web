@@ -18,4 +18,6 @@ export class Contestqso {
    qsoBand: string;
    qsoBandId: number;
    selectedUpdateAll: boolean;
+   dxccOrBandError: boolean;
+   rowClass: string;
 }

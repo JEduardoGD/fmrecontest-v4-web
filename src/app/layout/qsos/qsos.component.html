@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let qso of contestQsoList" [ngClass]="{'table-danger' : (qso.qsoBand == 'NOT FOUND' || qso.dxccEntityId === null)}">
+          <tr *ngFor="let qso of contestQsoList" [ngClass]="qso.rowClass">
             <td>{{qso.id}}</td>
             <td>{{qso.callsignR}}</td>
             <td>{{qso.dateTime}}</td>
@@ -78,7 +78,8 @@
                                     <input name="updateAllFreq" type="checkbox" selected [(ngModel)]="selectedUpdateAll" />Update all qsos on this log with frequency {{selectedQso.frequency}}
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary" (click)="updateDxccOrBand()">Update</button>
+                            <button type="submit" class="btn btn-primary" (click)="updateDxccOrBand()">Update</button> 
+                            <button type="submit" class="btn btn-danger" (click)="setAsDxccOrBandError()">Set as DXCC Entity or QRZ error</button>
                         </fieldset>
                     </form>
                   </div>
